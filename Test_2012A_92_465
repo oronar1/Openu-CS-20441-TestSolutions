@@ -1,0 +1,40 @@
+public static void mirror (int [] a)
+   {
+       int i= 0;
+       if (a.length%2 == 0)
+       {
+           i = a.length/2;
+        }
+        else
+        {
+            i = a.length/2+1;
+        }
+        mirror (a,i);
+    }
+    private static void mirror (int [] a ,int i){
+    if (i>a.length-1)
+    {
+        printArr(a,0);
+    }
+    else
+    {
+        mirror (a,i+1);
+        int temp = a[i];
+        a[i] = a[a.length-1-i];
+        a[a.length-1-i] = temp;
+        mirror (a,i+1);
+        temp = a[i];
+        a[i] = a[a.length-1-i];
+        a[a.length-1-i] = temp;
+    }
+}
+private static void printArr (int [] a, int i)
+{
+    if (i>a.length-1)
+    {
+        System.out.println ();
+        return;
+    }
+    System.out.print (a[i]);
+    printArr (a,i+1);
+}
