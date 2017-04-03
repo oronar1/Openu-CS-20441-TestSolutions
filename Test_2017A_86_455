@@ -1,0 +1,46 @@
+public class test_2017a_q1
+{
+    
+    public static void main(String[] args)
+{
+       String a = "sunday";
+       String b = "saturday";
+       
+       System.out.println(edit(a,b)+" expected 4");
+       a = "geek";
+       b = "gesek";
+       System.out.println(edit(a,b)+" expected 1");
+           }
+         
+    
+   public static int edit(String s,String t)
+    {
+        if (s.length()==0) 
+        	return t.length();
+        if (t.length()==0) 
+        	return s.length();
+        return edit (s,t,0,0);
+    }
+    
+    public static int edit(String s,String t,int i,int j)
+    {
+        if(i == s.length() && j<t.length()){
+            return 1+t.length()-j;}
+            
+        if(i < s.length() && j==t.length()){
+            return 1+s.length()-i;}
+        if(i == s.length() && j==t.length()){
+            return 0;
+                }
+        if(s.charAt(i) == t.charAt(j)){
+             return edit(s,t,i+1,j+1);}
+        if(s.charAt(i) != t.charAt(j)){
+             return Math.min(1+edit(s,t,i,j+1),1+edit(s,t,i+1,j));       
+             }
+             return edit(s,t,i+1,j+1);
+             }
+
+
+
+
+}
